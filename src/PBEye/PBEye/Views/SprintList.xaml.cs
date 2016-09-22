@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace PBEye
+namespace PBEye.Views
 {
 	public partial class SprintList : ContentPage
 	{

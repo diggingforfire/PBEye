@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PBEye
+namespace PBEye.Views
 {
 	public partial class MainPage
 	{
