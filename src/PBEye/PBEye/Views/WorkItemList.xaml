@@ -4,28 +4,23 @@
              xmlns:converters="clr-namespace:PBEye.Converters;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemList"
 						 Title="Work items"
-						 x:Name="WorkItemList"
-						 >
+						 x:Name="WorkItemList">
+  
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<converters:WorkItemTypeToColorConverter x:Key="WorkItemTypeToColorConverter" />
 		</ResourceDictionary>
-	
 	</ContentPage.Resources>
 	
 	<ListView ItemsSource="{Binding WorkItems, Source={x:Reference WorkItemList}}" HasUnevenRows="True">
 		<ListView.ItemTemplate>
 			<DataTemplate>
 				<ViewCell>
-					<StackLayout 
-						Orientation="Horizontal">
-						
-							<StackLayout BackgroundColor="{Binding Type, Converter={StaticResource WorkItemTypeToColorConverter }}" WidthRequest="10"></StackLayout>
+					<StackLayout Orientation="Horizontal">
+            <StackLayout BackgroundColor="{Binding Type, Converter={StaticResource WorkItemTypeToColorConverter}}" WidthRequest="10"></StackLayout>
 						<StackLayout Orientation="Horizontal" HorizontalOptions="Start" Padding="20, 10, 20, 10">
-
-							<Label Text="{Binding WorkItemNumberAndTitle}" TextColor="Black" />
+              <Label Text="{Binding WorkItemNumberAndTitle}" TextColor="Black" />
 						</StackLayout>
-						
 					</StackLayout>
 				</ViewCell>
 			</DataTemplate>
