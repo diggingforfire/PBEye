@@ -2,16 +2,16 @@
 
 namespace PBEye.Views
 {
-	public partial class MainPage
+	public partial class LoginPage
 	{
-		public MainPage()
+		public LoginPage()
 		{
 			InitializeComponent();
 		}
 
 		private async void Login(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new SprintList());
+			await Navigation.PushAsync(new WorkItemList());
 		}
 	}
 }
