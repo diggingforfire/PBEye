@@ -17,12 +17,31 @@ namespace PBEye.Views
 		{
 			WorkItems = new ObservableCollection<WorkItem>
 			{
-				new WorkItem { Title = "Implement crap", WorkItemNumber = 12903 },
-				new WorkItem { Title = "Design crap", WorkItemNumber = 11730 },
-				new WorkItem { Title = "R&D crap", WorkItemNumber = 13066 },
-				new WorkItem { Title = "More crap", WorkItemNumber = 12954 },
-				new WorkItem { Title = "Revert previous crap", WorkItemNumber = 13085 },
-				new WorkItem { Title = "Discuss crap", WorkItemNumber = 12952 }
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course, As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course, As a teacher, I want to get Extra Instructions from a preferred Course ", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903, Type = WorkItemType.Feature},
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903, Type = WorkItemType.Feature},
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903, Type = WorkItemType.Feature},
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903, Type = WorkItemType.Feature},
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course, As a teacher, I wa nt to ge t Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+				new WorkItem { Title = "[Dash3][ExtraInstruction] As a teacher, I want to get Extra Instructions from a preferred Course", WorkItemNumber = 12903 },
+
 			};
 
 			InitializeComponent();
