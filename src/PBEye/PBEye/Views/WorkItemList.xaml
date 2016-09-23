@@ -11,6 +11,7 @@
 			<converters:WorkItemTypeToColorConverter x:Key="WorkItemTypeToColorConverter" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
+	<Label x:Name="WorkItemsLabel"></Label>
 	
 	<ListView ItemsSource="{Binding WorkItems, Source={x:Reference WorkItemList}}" HasUnevenRows="True">
 		<ListView.ItemTemplate>
