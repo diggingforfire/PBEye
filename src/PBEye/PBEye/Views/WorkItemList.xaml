@@ -12,6 +12,7 @@
 			<converters:WorkItemTypeToColorConverter x:Key="WorkItemTypeToColorConverter" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
+	<Label x:Name="WorkItemsLabel"></Label>
 	
 	<ListView SeparatorColor="Silver" ItemsSource="{Binding WorkItems, Source={x:Reference WorkItemList}}" HasUnevenRows="False" RowHeight="100" ItemSelected="NavigateToWorkItemDetail">
 		<ListView.ItemTemplate>
