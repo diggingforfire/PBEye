@@ -41,5 +41,13 @@ namespace PBEye.Views
 
 			InitializeComponent();
 		}
+
+	    private async void NavigateToWorkItemDetail(object sender, SelectedItemChangedEventArgs e)
+	    {
+	        if (e.SelectedItem != null)
+	        {
+                await Navigation.PushAsync(new WorkItemDetail());
+            }
+	    }
 	}
 }

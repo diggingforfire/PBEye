@@ -23,7 +23,6 @@ namespace PBEye.Converters
 				default:
 					return _featureColor;
 			}
-
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

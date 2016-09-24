@@ -1,8 +1,6 @@
-﻿using Xamarin.Forms;
-
-namespace PBEye.Views
+﻿namespace PBEye.Views
 {
-	public partial class SprintList : ContentPage
+	public partial class SprintList
 	{
 		public SprintList()
 		{

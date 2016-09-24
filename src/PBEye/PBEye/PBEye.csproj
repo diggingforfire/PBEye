@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MultiLineLabel.cs" />
     <Compile Include="Converters\WorkItemTypeToColorConverter.cs" />
     <Compile Include="Models\WorkItem.cs" />
     <Compile Include="Models\WorkItemType.cs" />
@@ -47,6 +48,9 @@
     </Compile>
     <Compile Include="Views\SprintList.xaml.cs">
       <DependentUpon>SprintList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkItemDetail.xaml.cs">
+      <DependentUpon>WorkItemDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WorkItemList.xaml.cs">
       <DependentUpon>WorkItemList.xaml</DependentUpon>
@@ -89,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\WorkItemDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

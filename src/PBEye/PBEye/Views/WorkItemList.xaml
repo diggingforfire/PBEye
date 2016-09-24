@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:PBEye.Converters;assembly=PBEye"
+             xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemList"
 						 Title="Work items"
 						 x:Name="WorkItemList">
@@ -12,14 +13,21 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	
-	<ListView ItemsSource="{Binding WorkItems, Source={x:Reference WorkItemList}}" HasUnevenRows="True">
+	<ListView SeparatorColor="Silver" ItemsSource="{Binding WorkItems, Source={x:Reference WorkItemList}}" HasUnevenRows="False" RowHeight="100" ItemSelected="NavigateToWorkItemDetail">
 		<ListView.ItemTemplate>
 			<DataTemplate>
 				<ViewCell>
 					<StackLayout Orientation="Horizontal">
             <StackLayout BackgroundColor="{Binding Type, Converter={StaticResource WorkItemTypeToColorConverter}}" WidthRequest="10"></StackLayout>
-						<StackLayout Orientation="Horizontal" HorizontalOptions="Start" Padding="20, 10, 20, 10">
-              <Label Text="{Binding WorkItemNumberAndTitle}" TextColor="Black" />
+						<StackLayout Orientation="Vertical" HorizontalOptions="Start" Padding="20, 15, 30, 10">
+              <controls:MultiLineLabel Text="{Binding WorkItemNumberAndTitle}" TextColor="Black" Lines="2" LineBreakMode="TailTruncation">
+
+              </controls:MultiLineLabel>
+              <!--<BoxView HeightRequest="1" Color="Silver"></BoxView>-->
+              <StackLayout Orientation="Horizontal">    
+                <Label HorizontalOptions="StartAndExpand" Text="Ready for test"></Label>
+                <Label HorizontalOptions="EndAndExpand" Text="Candidate"></Label>
+              </StackLayout>
 						</StackLayout>
 					</StackLayout>
 				</ViewCell>
