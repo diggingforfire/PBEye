@@ -10,5 +10,11 @@ namespace PBEye
             public static readonly Color FeatureColor = Color.FromRgb(0, 147, 146);
             public static readonly Color BugColor = Color.FromRgb(209, 34, 13);
         }
+
+        public enum ButtonType
+        {
+            OK,
+            Cancel
+        }
     }
 }

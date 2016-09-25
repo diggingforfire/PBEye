@@ -6,7 +6,8 @@
              x:Class="PBEye.Views.WorkItemListView">
  
   <ContentPage.ToolbarItems>
-    
+    <ToolbarItem Text="{Binding SelectedSprint}" Order="Primary" Command="{Binding SelectSprint}"></ToolbarItem>
+    <ToolbarItem Text="{Binding SelectedTeam}" Order="Primary" Command="{Binding SelectTeam}"></ToolbarItem>
   </ContentPage.ToolbarItems>
   
     <ContentPage.Resources>
