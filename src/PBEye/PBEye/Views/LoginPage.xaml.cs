@@ -11,11 +11,7 @@ namespace PBEye.Views
 
 		private async void Login(object sender, EventArgs e)
 		{
-			var url = Url.Text;
-			var username = Username.Text;
-			var password = Password.Text;
-
-			await Navigation.PushAsync(new WorkItemList(url, username, password));
+			await Navigation.PushAsync(new WorkItemList());
             Navigation.RemovePage(this);
 		}
 	}
