@@ -1,8 +1,8 @@
-﻿namespace PBEye.Models
-{
-	public enum WorkItemType
-	{
-		Bug,
-		Feature
-	}
-}
+﻿//namespace PBEye.Models
+//{
+//	public enum WorkItemType
+//	{
+//		Bug,
+//		Feature
+//	}
+//}

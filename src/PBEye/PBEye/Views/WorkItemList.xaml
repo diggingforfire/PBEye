@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:PBEye.Converters;assembly=PBEye"
              xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemList"
 						 Title="Work items"
@@ -9,7 +8,6 @@
   
 	<ContentPage.Resources>
 		<ResourceDictionary>
-			<converters:WorkItemTypeToColorConverter x:Key="WorkItemTypeToColorConverter" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<Label x:Name="WorkItemsLabel"></Label>
@@ -19,7 +17,7 @@
 			<DataTemplate>
 				<ViewCell>
 					<StackLayout Orientation="Horizontal">
-            <StackLayout BackgroundColor="{Binding Type, Converter={StaticResource WorkItemTypeToColorConverter}}" WidthRequest="10"></StackLayout>
+            <StackLayout BackgroundColor="Red" WidthRequest="10"></StackLayout>
 						<StackLayout Orientation="Vertical" HorizontalOptions="Start" Padding="20, 15, 30, 10">
               <controls:MultiLineLabel Text="{Binding WorkItemNumberAndTitle}" TextColor="Black" Lines="2" LineBreakMode="TailTruncation">
 

@@ -11,7 +11,7 @@ using PBEye.Service.Models;
 
 namespace PBEye.Service
 {
-	public class VsService
+	internal class VsService : IVsService
 	{
 		private string _url;
 		private string _username;
@@ -24,7 +24,7 @@ namespace PBEye.Service
 			_url = url;
 		}
 
-		public List<WorkItem> GetWorkItems()
+		public IList<WorkItem> GetWorkItems()
 		{
 			var workItems = new List<WorkItem>();
 
