@@ -1,8 +1,8 @@
 ﻿namespace PBEye.Views
 {
-    public partial class WorkItemDetail
+    public partial class WorkItemDetailView
     {
-        public WorkItemDetail()
+        public WorkItemDetailView()
         {
             InitializeComponent();
         }
