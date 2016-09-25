@@ -38,6 +38,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Behaviors\BehaviorBase.cs" />
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Controls\MultiLineLabel.cs" />
     <Compile Include="Converters\WorkItemTypeToColorConverter.cs" />
     <Compile Include="PageModelMapper.cs" />

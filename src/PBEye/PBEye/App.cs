@@ -12,7 +12,13 @@ namespace PBEye
             RegisterDependencies();
             FreshPageModelResolver.PageModelMapper = new PageModelMapper();
             var view = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
-            MainPage = new FreshNavigationContainer(view);
+
+            var navigationContainer = new FreshNavigationContainer(view)
+            {
+                BarBackgroundColor = Constants.Colors.NavigationBarColor,
+            };
+
+            MainPage = navigationContainer;
         }
 
         private void RegisterDependencies()
