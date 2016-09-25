@@ -12,5 +12,7 @@
 		public string Effort { get; set; }
 		public string Changed { get; set; }
 		public string AcceptanceCriteria { get; set; }
+
+	    public string WorkItemNumberAndTitle => $"{Id} - {Title}";
 	}
 }

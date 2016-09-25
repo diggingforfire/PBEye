@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
+             xmlns:behaviors="clr-namespace:PBEye.Behaviors;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemListView"
              Title="Work items">
  
@@ -11,7 +12,11 @@
 	</ContentPage.Resources>
  
 	
-	<ListView SeparatorColor="Silver" ItemsSource="{Binding WorkItems}" HasUnevenRows="False" RowHeight="100">
+	<ListView SeparatorColor="Silver" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
+    <ListView.Behaviors>
+      <behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ShowWorkItemDetail}" />
+    </ListView.Behaviors>   
+    
 		<ListView.ItemTemplate>
 			<DataTemplate>
 				<ViewCell>

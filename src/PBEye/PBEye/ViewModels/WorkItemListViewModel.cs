@@ -3,6 +3,7 @@ using FreshMvvm;
 using PBEye.Service;
 using PBEye.Service.Models;
 using PropertyChanged;
+using Xamarin.Forms;
 
 namespace PBEye.ViewModels
 {
@@ -11,6 +12,7 @@ namespace PBEye.ViewModels
     {
         private readonly IVsService _vsService;
         public ObservableCollection<WorkItem> WorkItems { get; set; }
+        public WorkItem SelectedWorkItem { get; set; }
 
         public WorkItemListViewModel(IVsService vsService)
         {
@@ -20,6 +22,17 @@ namespace PBEye.ViewModels
         public override void Init(object initData)
         {
             WorkItems = new ObservableCollection<WorkItem>(_vsService.GetWorkItems());
+        }
+
+        public Command ShowWorkItemDetail
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await CoreMethods.PushPageModel<WorkItemDetailViewModel>(SelectedWorkItem);
+                });
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace PBEye.ViewModels
                 return new Command(async () =>
                 {
                     await CoreMethods.PushPageModel<WorkItemListViewModel>();
+                    CoreMethods.RemoveFromNavigation();
                 });
             }
         }
