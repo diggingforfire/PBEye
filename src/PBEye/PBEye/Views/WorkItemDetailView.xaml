@@ -1,6 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemDetailView">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+  
+  <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0" >
+
+    <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" BackgroundColor="Teal">
+      <Label Text="{Binding SelectedWorkItem.Id}" TextColor="Yellow" FontAttributes="Bold" FontSize="16"></Label>
+      <controls:MultiLineLabel TextColor="White" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
+        
+      </controls:MultiLineLabel>
+    </StackLayout>
+
+    <Grid VerticalOptions="Fill" BackgroundColor="Yellow">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="*"></RowDefinition>
+      </Grid.RowDefinitions>
+
+      <ContentView Grid.Row="0" Grid.Column="0" Padding="0, 15, 0, 0">
+        <Label HorizontalOptions="CenterAndExpand" Text="Team ST"/>
+      </ContentView>
+
+      <ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 0, 0">
+        <Label HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
+      </ContentView>
+
+      <ContentView Grid.Row="1" Grid.Column="0" Padding="0, 0, 0, 15">
+        <Label HorizontalOptions="CenterAndExpand" Text="Committed" />
+      </ContentView>
+
+      <ContentView Grid.Row="1" Grid.Column="1" Padding="0, 0, 0, 15">
+        <Label HorizontalOptions="CenterAndExpand" Text="Development" />
+      </ContentView>
+    </Grid>
+    
+  </StackLayout>
+  
 </ContentPage>
