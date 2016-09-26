@@ -2,44 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
+             xmlns:constants="clr-namespace:PBEye.Constants;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemDetailView">
   
-  <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0" >
-
-    <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" BackgroundColor="Teal">
-      <Label Text="{Binding SelectedWorkItem.Id}" TextColor="Yellow" FontAttributes="Bold" FontSize="16"></Label>
-      <controls:MultiLineLabel TextColor="White" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
-        
-      </controls:MultiLineLabel>
-    </StackLayout>
-
-    <Grid VerticalOptions="Fill" BackgroundColor="Yellow">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"></RowDefinition>
-        <RowDefinition Height="*"></RowDefinition>
-      </Grid.RowDefinitions>
-
-      <ContentView Grid.Row="0" Grid.Column="0" Padding="0, 15, 0, 0">
-        <Label HorizontalOptions="CenterAndExpand" Text="Team ST"/>
-      </ContentView>
-
-      <ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 0, 0">
-        <Label HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
-      </ContentView>
-
-      <ContentView Grid.Row="1" Grid.Column="0" Padding="0, 0, 0, 15">
-        <Label HorizontalOptions="CenterAndExpand" Text="Committed" />
-      </ContentView>
-
-      <ContentView Grid.Row="1" Grid.Column="1" Padding="0, 0, 0, 15">
-        <Label HorizontalOptions="CenterAndExpand" Text="Development" />
-      </ContentView>
-    </Grid>
+  <ScrollView> 
     
-  </StackLayout>
+    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0" >
+
+      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" BackgroundColor="{x:Static constants:Colors.FeatureColor}">
+        <Label Text="{Binding SelectedWorkItem.Id}" TextColor="{x:Static constants:Colors.PrimaryAccentColor}" FontAttributes="Bold" FontSize="16"></Label>
+        <controls:MultiLineLabel TextColor="White" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
+        
+        </controls:MultiLineLabel>
+      </StackLayout>
+
+      <Grid VerticalOptions="Fill" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ContentView Grid.Row="0" Grid.Column="0" Padding="0, 15, 0, 0">
+          <Label HorizontalOptions="CenterAndExpand" Text="Team ST"/>
+        </ContentView>
+
+        <ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 0, 0">
+          <Label HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
+        </ContentView>
+
+        <ContentView Grid.Row="1" Grid.Column="0" Padding="0, 0, 0, 15">
+          <Label HorizontalOptions="CenterAndExpand" Text="Committed" />
+        </ContentView>
+
+        <ContentView Grid.Row="1" Grid.Column="1" Padding="0, 0, 0, 15">
+          <Label HorizontalOptions="CenterAndExpand" Text="Development" />
+        </ContentView>
+      </Grid>
+    
+      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
+        <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="Black"></Label>
+        <Label Text="{Binding SelectedWorkItem.Description}"></Label>
+      </StackLayout>
+    
+      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
+          <Label Text="Acceptance criteria" FontSize="18" FontAttributes="Bold" TextColor="Black"></Label>
+        <Label Text="{Binding SelectedWorkItem.AcceptanceCriteria}"></Label>
+      </StackLayout>
+    
+    </StackLayout>
+    
+  </ScrollView>
+  
   
 </ContentPage>
