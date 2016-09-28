@@ -19,8 +19,8 @@ namespace PBEye.ViewModels
         public WorkItemListViewModel(IVsService vsService)
         {
             _vsService = vsService;
-            SelectedTeam = "No team";
-            SelectedSprint = "Sprint 74";
+            SelectedTeam = "No team \u25bc";
+            SelectedSprint = "Sprint 74 \u25bc";
         }
 
         public override void Init(object initData)

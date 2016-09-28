@@ -17,7 +17,7 @@
 	</ContentPage.Resources>
  
 	
-	<ListView SeparatorColor="Silver" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
+	<ListView SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
     <ListView.Behaviors>
       <behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ShowWorkItemDetail}" />
     </ListView.Behaviors>   
@@ -30,7 +30,7 @@
 						<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="20, 15, 30, 10">
               <controls:MultiLineLabel Text="{Binding WorkItemNumberAndTitle}" TextColor="Black" Lines="2" LineBreakMode="TailTruncation" />
 
-              <BoxView HeightRequest="0.5" Color="Silver"></BoxView>
+              <BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
               
               <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label HorizontalOptions="StartAndExpand" Text="Ready for test"></Label>

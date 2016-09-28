@@ -11,7 +11,7 @@
 
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" BackgroundColor="{x:Static constants:Colors.FeatureColor}">
         <Label Text="{Binding SelectedWorkItem.Id}" TextColor="{x:Static constants:Colors.PrimaryAccentColor}" FontAttributes="Bold" FontSize="16"></Label>
-        <controls:MultiLineLabel TextColor="White" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
+        <controls:MultiLineLabel TextColor="{x:Static constants:Colors.SecondaryAccentColor}" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
         
         </controls:MultiLineLabel>
       </StackLayout>
@@ -44,12 +44,12 @@
       </Grid>
     
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
-        <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="Black"></Label>
+        <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
         <Label Text="{Binding SelectedWorkItem.Description}"></Label>
       </StackLayout>
     
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
-          <Label Text="Acceptance criteria" FontSize="18" FontAttributes="Bold" TextColor="Black"></Label>
+          <Label Text="Acceptance criteria" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
         <Label Text="{Binding SelectedWorkItem.AcceptanceCriteria}"></Label>
       </StackLayout>
     
