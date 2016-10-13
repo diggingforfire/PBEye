@@ -17,12 +17,13 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
-	<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0" >
+ 
 		
 		<Grid VerticalOptions="FillAndExpand" RowSpacing="0">
 
 			<Grid.RowDefinitions>
 				<RowDefinition Height="1*"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
 				<RowDefinition Height="10*"></RowDefinition>
 			</Grid.RowDefinitions>
 			
@@ -35,16 +36,18 @@
 					<RowDefinition Height="*"></RowDefinition>
 				</Grid.RowDefinitions>
 
-				<ContentView Grid.Row="0" Grid.Column="0" Padding="0, 15, 0, 15">
-					<Label HorizontalOptions="CenterAndExpand" Text="Team ST"/>
+				<ContentView Grid.Row="0" Grid.Column="0" Padding="30, 15, 0, 15">
+					<Label FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Team ST"/>
 				</ContentView>
 
-				<ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 0, 15">
-					<Label HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
+				<ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 30, 15">
+					<Label FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
 				</ContentView>
 			</Grid>
 
-			<ListView Grid.Row="1" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
+			<BoxView Grid.Row="1" HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
+			
+			<ListView Grid.Row="2" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
 				<ListView.Behaviors>
 					<behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ShowWorkItemDetail}" />
 				</ListView.Behaviors>
@@ -55,13 +58,13 @@
 							<StackLayout Orientation="Horizontal">
 								<StackLayout BackgroundColor="{x:Static constants:Colors.BugColor}" WidthRequest="10"></StackLayout>
 								<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="20, 15, 30, 10">
-									<controls:MultiLineLabel Text="{Binding WorkItemNumberAndTitle}" TextColor="Black" Lines="2" LineBreakMode="TailTruncation" />
+									<controls:MultiLineLabel Text="{Binding WorkItemNumberAndTitle}" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Lines="2" LineBreakMode="TailTruncation" />
 
 									<BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
 
 									<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-										<Label HorizontalOptions="StartAndExpand" TextColor="{x:Static constants:Colors.SecondaryTextColor}" Text="Ready for test"></Label>
-										<Label HorizontalOptions="EndAndExpand" TextColor="{x:Static constants:Colors.SecondaryTextColor}" Text="Candidate"></Label>
+										<Label HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Ready for test"></Label>
+										<Label HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Candidate"></Label>
 									</StackLayout>
 
 								</StackLayout>
@@ -71,6 +74,6 @@
 				</ListView.ItemTemplate>
 			</ListView>
 		</Grid>
-	</StackLayout>
+ 
   
 </ContentPage>

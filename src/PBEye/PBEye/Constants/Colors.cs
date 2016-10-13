@@ -11,7 +11,7 @@ namespace PBEye.Constants
 		public static readonly Color SecondaryTextColor = Color.Silver;
 		public static readonly Color PrimaryAccentColor = Color.FromRgb(255, 252, 202);
         public static readonly Color SecondaryAccentColor = Color.White;
-        public static readonly Color LineAndSeparatorColor = Color.Silver;
+	    public static readonly Color LineAndSeparatorColor = Color.FromRgb(211, 211, 211);
     }
 
 }
