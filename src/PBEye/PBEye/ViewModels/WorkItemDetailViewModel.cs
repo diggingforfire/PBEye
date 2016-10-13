@@ -14,8 +14,6 @@ namespace PBEye.ViewModels
         public override void Init(object initData)
         {
             SelectedWorkItem = (WorkItem)initData;
-
-	        Device.OnPlatform(Android: () => Title = "Work item");
         }
     }
 }
