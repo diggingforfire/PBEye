@@ -37,7 +37,14 @@
 				</Grid.RowDefinitions>
 
 				<ContentView Grid.Row="0" Grid.Column="0" Padding="30, 15, 0, 15">
-					<Label FontFamily="Avenir" HorizontalOptions="CenterAndExpand" Text="Team ST"/>
+					<Label HorizontalOptions="CenterAndExpand" Text="Team ST">
+						<Label.FontFamily>
+							<OnPlatform x:TypeArguments="x:String">
+								<OnPlatform.iOS>Avenir</OnPlatform.iOS>
+									<OnPlatform.Android>Avenir.otf#Avenir</OnPlatform.Android>
+							</OnPlatform>
+						</Label.FontFamily>
+					</Label>
 				</ContentView>
 
 				<ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 30, 15">
