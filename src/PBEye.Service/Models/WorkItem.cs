@@ -14,5 +14,6 @@
 		public string AcceptanceCriteria { get; set; }
 
 	    public string WorkItemNumberAndTitle => $"{Id} - {Title}";
+		public RawWorkItem Raw { get; set; }
 	}
 }

@@ -3,8 +3,9 @@ using PBEye.Service.Models;
 
 namespace PBEye.Service
 {
-    public interface IVsService
-    {
-        IList<WorkItem> GetWorkItems();
-    }
+	public interface IVsService
+	{
+		IList<WorkItem> GetWorkItems();
+		WorkItem GetWorkItem(int id);
+	}
 }

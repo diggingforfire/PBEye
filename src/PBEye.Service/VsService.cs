@@ -11,7 +11,7 @@ using PBEye.Service.Models;
 
 namespace PBEye.Service
 {
-	internal class VsService : IVsService
+	public class VsService : IVsService
 	{
 		private string _url;
 		private string _username;
@@ -100,7 +100,7 @@ namespace PBEye.Service
 				return null;
 			}
 
-			var workItem = workItemResult.WorkItems[0];
+			RawWorkItem workItem = workItemResult.WorkItems[0];
 
 			var workItemClean = new WorkItem
 			{
@@ -113,7 +113,8 @@ namespace PBEye.Service
 				Description = workItem.GetField("System.Description"),
 				Effort = workItem.GetField("Microsoft.VSTS.Scheduling.Effort"),
 				AcceptanceCriteria = workItem.GetField("Microsoft.VSTS.Common.AcceptanceCriteria"),
-				Changed = workItem.GetField("System.ChangedDate")
+				Changed = workItem.GetField("System.ChangedDate"),
+				Raw = workItem
 			};
 
 			return workItemClean;
