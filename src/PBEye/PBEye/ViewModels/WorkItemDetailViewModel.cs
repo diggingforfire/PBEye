@@ -1,6 +1,7 @@
 ﻿using FreshMvvm;
 using PBEye.Service.Models;
 using PropertyChanged;
+using Xamarin.Forms;
 
 namespace PBEye.ViewModels
 {
@@ -8,15 +9,13 @@ namespace PBEye.ViewModels
     public class WorkItemDetailViewModel : FreshBasePageModel
     {
         public WorkItem SelectedWorkItem { get; set; }
-
-        public WorkItemDetailViewModel()
-        {
-            
-        }
+	    public string Title { get; set; }
 
         public override void Init(object initData)
         {
             SelectedWorkItem = (WorkItem)initData;
+
+	        Device.OnPlatform(Android: () => Title = "Work item");
         }
     }
 }

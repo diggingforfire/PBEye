@@ -7,10 +7,10 @@
              Title="Work items"
              x:Class="PBEye.Views.WorkItemListView">
  
-  <ContentPage.ToolbarItems>
-    <ToolbarItem Text="{Binding SelectedSprint}"  Order="Primary" Command="{Binding SelectSprint}"></ToolbarItem>
+  <!--<ContentPage.ToolbarItems>
+    <ToolbarItem Text="{Binding SelectedSprint}"  Icon="icon.png" Order="Primary" Command="{Binding SelectSprint}"></ToolbarItem>
     <ToolbarItem Text="{Binding SelectedTeam}" Order="Primary" Priority="0" Command="{Binding SelectTeam}"></ToolbarItem>
-  </ContentPage.ToolbarItems>
+  </ContentPage.ToolbarItems>-->
   
     <ContentPage.Resources>
 		<ResourceDictionary>
