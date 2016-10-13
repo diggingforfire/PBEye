@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
@@ -37,11 +37,11 @@
 				</Grid.RowDefinitions>
 
 				<ContentView Grid.Row="0" Grid.Column="0" Padding="30, 15, 0, 15">
-					<Label FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Team ST"/>
+					<Label FontFamily="Avenir" HorizontalOptions="CenterAndExpand" Text="Team ST"/>
 				</ContentView>
 
 				<ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 30, 15">
-					<Label FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
+					<Label HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
 				</ContentView>
 			</Grid>
 
