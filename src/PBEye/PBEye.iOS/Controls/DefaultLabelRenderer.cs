@@ -16,25 +16,34 @@ namespace PBEye.iOS.Controls
 
 			if (Element.FontFamily == null)
 			{
-				Control.Font = UIFont.FromName(Element.FontAttributes == FontAttributes.Bold ? "AvenirBold" : "Avenir", Control.Font.PointSize);
+				Control.Font = UIFont.FromName(Element.FontAttributes == FontAttributes.Bold ?
+											   "AvenirNextLTPro-Bold" : "AvenirNextLTPro-Regular",
+											   Control.Font.PointSize);
 			}
 
-			float lineHeight = 1.2f;
+	
 
-			if (Math.Abs(lineHeight - (-1)) > 0.05)
+			if (Element.Text != null)
 			{
-				var paragraphStyle = new NSMutableParagraphStyle
+				float lineSpacing = 5;
+
+				if (Math.Abs(lineSpacing - (-1)) > 0.05)
 				{
-					LineSpacing = lineHeight
-				};
+					var paragraphStyle = new NSMutableParagraphStyle
+					{
+						LineSpacing = lineSpacing,
+						LineBreakMode = (UILineBreakMode)Enum.Parse(typeof(UILineBreakMode), Element.LineBreakMode.ToString())
+					};
 
-				var text = new NSMutableAttributedString(Element.Text);
-				var style = UIStringAttributeKey.ParagraphStyle;
-				var range = new NSRange(0, text.Length);
 
-				text.AddAttribute(style, paragraphStyle, range);
 
-				Control.AttributedText = text;
+					var text = new NSMutableAttributedString(Element.Text);
+					var style = UIStringAttributeKey.ParagraphStyle;
+					var range = new NSRange(0, text.Length);
+
+					text.AddAttribute(style, paragraphStyle, range);
+					Control.AttributedText = text;
+				}
 			}
 		}
 	}
