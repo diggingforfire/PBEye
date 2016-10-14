@@ -1,3 +1,4 @@
+using System;
 using PBEye.Controls;
 using PBEye.Droid.Controls;
 using Xamarin.Forms;
@@ -14,10 +15,15 @@ namespace PBEye.Droid.Controls
 
             MultiLineLabel multiLineLabel = (MultiLineLabel)Element;
 
-            if (multiLineLabel != null && multiLineLabel.Lines != -1)
+            if (multiLineLabel != null)
             {
-                Control.SetSingleLine(false);
-                Control.SetLines(multiLineLabel.Lines);
+	            if (multiLineLabel.Lines != -1)
+	            {
+					Control.SetSingleLine(false);
+					Control.SetLines(multiLineLabel.Lines);
+				}
+
+				UpdateLayout();
             }
         }
     }

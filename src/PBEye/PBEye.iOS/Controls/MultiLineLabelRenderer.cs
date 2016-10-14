@@ -1,5 +1,8 @@
+using System;
+using Foundation;
 using PBEye.Controls;
 using PBEye.iOS.Controls;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -14,10 +17,13 @@ namespace PBEye.iOS.Controls
 
             MultiLineLabel multiLineLabel = (MultiLineLabel)Element;
 
-	        if (multiLineLabel != null && multiLineLabel.Lines != -1)
+	        if (multiLineLabel != null)
 	        {
-		        Control.Lines = multiLineLabel.Lines;
-	        }
+		        if (multiLineLabel.Lines != -1)
+		        {
+					Control.Lines = multiLineLabel.Lines;
+				}
+			}
         }
     }
 }
