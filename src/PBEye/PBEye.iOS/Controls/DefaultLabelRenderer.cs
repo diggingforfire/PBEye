@@ -14,7 +14,7 @@ namespace PBEye.iOS.Controls
 
 			if (Element.FontFamily == null)
 			{
-				Control.Font = UIFont.FromName("Avenir", Control.Font.PointSize);
+				Control.Font = UIFont.FromName(Element.FontAttributes == FontAttributes.Bold ? "AvenirBold" : "Avenir", Control.Font.PointSize);
 			}
 		}
 	}
