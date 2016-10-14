@@ -27,7 +27,7 @@
 				<RowDefinition Height="10*"></RowDefinition>
 			</Grid.RowDefinitions>
 			
-			<Grid Grid.Row="0" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+			<Grid Grid.Row="0" VerticalOptions="CenterAndExpand" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*" />
@@ -37,11 +37,11 @@
 				</Grid.RowDefinitions>
 
 				<ContentView Grid.Row="0" Grid.Column="0" Padding="30, 15, 0, 15">
-					<Label HorizontalOptions="CenterAndExpand" Text="Team ST" />
+					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Team ST" />
 				</ContentView>
 
 				<ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 30, 15">
-					<Label HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
+					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
 				</ContentView>
 			</Grid>
 
@@ -55,20 +55,38 @@
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
-							<StackLayout Orientation="Horizontal">
-								<StackLayout BackgroundColor="{x:Static constants:Colors.BugColor}" WidthRequest="10"></StackLayout>
-								<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="20, 15, 30, 10">
+							<Grid>
+
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="3*"/>
+                  <ColumnDefinition Width="87*" />
+                  <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                
+								<StackLayout Grid.Column="0" BackgroundColor="{x:Static constants:Colors.BugColor}"></StackLayout>
+                
+								<StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="20, 0, 0, 0">
 									<controls:MultiLineLabel Text="{Binding WorkItemNumberAndTitle}" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Lines="2" LineBreakMode="TailTruncation" />
 
-									<BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
+                  <ContentView Padding="0, 5, 0, 5">
+                    <BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
+                  </ContentView>
 
-									<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-										<Label HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Ready for test"></Label>
-										<Label HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Candidate"></Label>
+
+                  <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+										<Label FontSize="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Ready for test"></Label>
+                    <Label FontSize="12" HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Candidate"></Label>
 									</StackLayout>
 
 								</StackLayout>
-							</StackLayout>
+
+
+                <StackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+                  <Image Scale="0.5" Source="arrow_right_icon.png" Aspect="AspectFit"></Image>
+                </StackLayout>
+                
+							</Grid>
+              
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
