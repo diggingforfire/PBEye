@@ -19,7 +19,7 @@
 
  
 		
-		<Grid VerticalOptions="FillAndExpand" RowSpacing="0">
+		<Grid VerticalOptions="FillAndExpand" RowSpacing="0" >
 
 			<Grid.RowDefinitions>
 				<RowDefinition Height="1*"></RowDefinition>
@@ -27,7 +27,7 @@
 				<RowDefinition Height="10*"></RowDefinition>
 			</Grid.RowDefinitions>
 			
-			<Grid Grid.Row="0" VerticalOptions="CenterAndExpand" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+			<Grid Grid.Row="0"  VerticalOptions="FillAndExpand" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*" />
@@ -36,12 +36,12 @@
 					<RowDefinition Height="*"></RowDefinition>
 				</Grid.RowDefinitions>
 
-				<ContentView Grid.Row="0" Grid.Column="0" Padding="30, 15, 0, 15">
-					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Team ST" />
+				<ContentView Grid.Row="0" Grid.Column="0">
+					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="Team ST" />
 				</ContentView>
 
-				<ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 30, 15">
-					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
+				<ContentView Grid.Row="0" Grid.Column="1">
+					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
 				</ContentView>
 			</Grid>
 
