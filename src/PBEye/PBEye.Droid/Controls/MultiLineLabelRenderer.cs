@@ -6,7 +6,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(MultiLineLabel), typeof(MultiLineLabelRenderer))]
 namespace PBEye.Droid.Controls
 {
-    public class MultiLineLabelRenderer : LabelRenderer
+    public class MultiLineLabelRenderer : DefaultLabelRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
