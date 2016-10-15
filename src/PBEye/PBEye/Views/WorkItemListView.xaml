@@ -28,17 +28,24 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*" />
+        	<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*"></RowDefinition>
 				</Grid.RowDefinitions>
 
-				<StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+        
+        <StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" BackgroundColor="{x:Static constants:Colors.SecondaryAccentColor}">
+					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Snappet" />
+          <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
+				</StackLayout>
+        
+				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" BackgroundColor="{x:Static constants:Colors.SecondaryAccentColor}">
 					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Team ST" />
           <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
 				</StackLayout>
 
-				<StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" BackgroundColor="{x:Static constants:Colors.SecondaryAccentColor}">
 					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Sprint 75" />
           <Image Source="arrow_down.png" Aspect="AspectFit"></Image>
 				</StackLayout>

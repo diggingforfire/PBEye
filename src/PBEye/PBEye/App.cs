@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using FreshMvvm;
+﻿using FreshMvvm;
 using PBEye.Service;
 using PBEye.ViewModels;
 using Xamarin.Forms;
