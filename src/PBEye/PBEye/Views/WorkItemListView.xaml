@@ -7,27 +7,24 @@
              Title="Work items"
              x:Class="PBEye.Views.WorkItemListView">
  
-  <!--<ContentPage.ToolbarItems>
-    <ToolbarItem Text="{Binding SelectedSprint}"  Icon="icon.png" Order="Primary" Command="{Binding SelectSprint}"></ToolbarItem>
-    <ToolbarItem Text="{Binding SelectedTeam}" Order="Primary" Priority="0" Command="{Binding SelectTeam}"></ToolbarItem>
-  </ContentPage.ToolbarItems>-->
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="logout.png" Order="Primary" Priority="0" Command="{Binding Logout}" ></ToolbarItem>
+  </ContentPage.ToolbarItems>
   
     <ContentPage.Resources>
 		<ResourceDictionary>
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
- 
-		
 		<Grid VerticalOptions="FillAndExpand" RowSpacing="0" >
 
 			<Grid.RowDefinitions>
-				<RowDefinition Height="1*"></RowDefinition>
-				<RowDefinition Height="Auto"></RowDefinition>
 				<RowDefinition Height="10*"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="90*"></RowDefinition>
 			</Grid.RowDefinitions>
 			
-			<Grid Grid.Row="0"  VerticalOptions="FillAndExpand" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+			<Grid Grid.Row="0" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*" />
@@ -36,18 +33,20 @@
 					<RowDefinition Height="*"></RowDefinition>
 				</Grid.RowDefinitions>
 
-				<ContentView Grid.Row="0" Grid.Column="0">
-					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="Team ST" />
-				</ContentView>
+				<StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Team ST" />
+          <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
+				</StackLayout>
 
-				<ContentView Grid.Row="0" Grid.Column="1">
-					<Label FontSize="13" TextColor="{x:Static constants:Colors.PrimaryTextColor}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
-				</ContentView>
+				<StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Sprint 75" />
+          <Image Source="arrow_down.png" Aspect="AspectFit"></Image>
+				</StackLayout>
 			</Grid>
 
 			<BoxView Grid.Row="1" HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
 			
-			<ListView Grid.Row="2" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
+			<ListView  Grid.Row="2" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
 				<ListView.Behaviors>
 					<behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ShowWorkItemDetail}" />
 				</ListView.Behaviors>
@@ -72,17 +71,28 @@
                     <BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
                   </ContentView>
 
-
-                  <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-										<Label FontSize="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Ready for test"></Label>
-                    <Label FontSize="12" HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Candidate"></Label>
-									</StackLayout>
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackLayout Grid.Column="0" Orientation="Horizontal">
+                      <Image Source="state_green.png" Aspect="AspectFit"></Image>
+                      <Label FontSize="12" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Ready for test"></Label> 
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                      <Image Source="branch.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
+                      <Label FontSize="12" HorizontalOptions="End" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Candidate"></Label> 
+                    </StackLayout>
+									</Grid>
 
 								</StackLayout>
 
 
                 <StackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
-                  <Image Scale="0.5" Source="arrow_right_icon.png" Aspect="AspectFit"></Image>
+                  <Image Scale="0.5" Source="arrow_right.png" Aspect="AspectFit"></Image>
                 </StackLayout>
                 
 							</Grid>

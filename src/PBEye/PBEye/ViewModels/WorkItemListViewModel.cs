@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using FreshMvvm;
+using PBEye.Constants;
 using PBEye.Service;
 using PBEye.Service.Models;
 using PropertyChanged;
@@ -11,14 +12,16 @@ namespace PBEye.ViewModels
     public class WorkItemListViewModel : FreshBasePageModel
     {
         private readonly IVsService _vsService;
+	    private readonly INavigationManager _navigationManager;
         public ObservableCollection<WorkItem> WorkItems { get; set; }
         public WorkItem SelectedWorkItem { get; set; }
         public string SelectedTeam { get; set; }
         public string SelectedSprint { get; set; }
 
-        public WorkItemListViewModel(IVsService vsService)
+        public WorkItemListViewModel(IVsService vsService, INavigationManager navigationManager)
         {
             _vsService = vsService;
+	        _navigationManager = navigationManager;
             SelectedTeam = "No team";
             SelectedSprint = "Sprint 74";
         }
@@ -75,5 +78,22 @@ namespace PBEye.ViewModels
                 });
             }
         }
+
+	    public Command Logout
+	    {
+		    get
+		    {
+			    return new Command(async () =>
+			    {
+				    if (await CoreMethods.DisplayAlert("Log out", "Are you sure you want to log out?", 
+							ButtonType.OK.ToString(),
+						    ButtonType.Cancel.ToString()))
+				    {
+						await CoreMethods.PushPageModel<LoginViewModel>();
+						CoreMethods.RemoveFromNavigation();
+					}
+			    });
+		    }
+	    }
     }
 }

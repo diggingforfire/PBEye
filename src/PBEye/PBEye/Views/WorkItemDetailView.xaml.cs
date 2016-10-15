@@ -1,22 +1,19 @@
-﻿using FreshMvvm;
-
-namespace PBEye.Views
+﻿namespace PBEye.Views
 {
     public partial class WorkItemDetailView
     {
-		private readonly App app;
+		private readonly INavigationManager _navigationManager;
 
-        public WorkItemDetailView()
+		public WorkItemDetailView(INavigationManager navigationManager)
         {
             InitializeComponent();
 
-			this.app = FreshIOC.Container.Resolve<App>();
+			_navigationManager = navigationManager;
         }
 
 		protected override void OnAppearing()
 		{
-			// TODO: fix properly without resolving and referencing App class
-			this.app.SetNavigationBarColor(PBEye.Constants.Colors.FeatureColor);
+			_navigationManager.SetNavigationBarColor(PBEye.Constants.Colors.FeatureColor);
 
 			base.OnAppearing();
 		}

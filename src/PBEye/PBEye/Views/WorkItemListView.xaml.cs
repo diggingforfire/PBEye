@@ -1,24 +1,21 @@
 ﻿using Xamarin.Forms;
-using FreshMvvm;
 
 namespace PBEye.Views
 {
     public partial class WorkItemListView
     {
-		private readonly App app;
+	    private readonly INavigationManager _navigationManager;
 
-        public WorkItemListView()
+        public WorkItemListView(INavigationManager navigationManager)
         {
             InitializeComponent();
-
+	        this._navigationManager = navigationManager;
 			NavigationPage.SetHasBackButton(this, false);
-			this.app = FreshIOC.Container.Resolve<App>();
         }
 
 		protected override void OnAppearing()
 		{
-			// TODO: fix properly without resolving and referencing App class
-			this.app.SetNavigationBarColor(PBEye.Constants.Colors.NavigationBarColor);
+			_navigationManager.SetNavigationBarColor(PBEye.Constants.Colors.NavigationBarColor);
 
 			base.OnAppearing();
 		}

@@ -1,37 +1,39 @@
-﻿using FreshMvvm;
+﻿using System.Threading.Tasks;
+using FreshMvvm;
 using PBEye.Service;
 using PBEye.ViewModels;
 using Xamarin.Forms;
 
 namespace PBEye
 {
-    public class App : Application
+    public class App : Application, INavigationManager
     {
+	    private readonly FreshNavigationContainer _navigationContainer;
+
         public App()
         {
             RegisterDependencies();
             FreshPageModelResolver.PageModelMapper = new PageModelMapper();
             var view = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
 
-			var navigationContainer = new FreshNavigationContainer(view)
+			_navigationContainer = new FreshNavigationContainer(view)
 			{
 				BarBackgroundColor = Constants.Colors.NavigationBarColor,
-				BarTextColor = Constants.Colors.SecondaryAccentColor,
+				BarTextColor = Color.White,
             };
 
-            MainPage = navigationContainer;
-
+            MainPage = _navigationContainer;
         }
 
 		public void SetNavigationBarColor(Color color)
 		{
-			((FreshNavigationContainer)MainPage).BarBackgroundColor = color;
+			_navigationContainer.BarBackgroundColor = color;
 		}
 
         private void RegisterDependencies()
         {
             FreshIOC.Container.Register(VsServiceFactory.GetService());
-			FreshIOC.Container.Register(this);
+	        FreshIOC.Container.Register<INavigationManager>(this);
         }
     }
 }

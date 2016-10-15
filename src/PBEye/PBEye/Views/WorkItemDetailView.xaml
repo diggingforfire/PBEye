@@ -12,8 +12,8 @@
     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0" >
 
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" BackgroundColor="{x:Static constants:Colors.FeatureColor}">
-        <Label Text="{Binding SelectedWorkItem.Id}" TextColor="{x:Static constants:Colors.PrimaryAccentColor}" FontAttributes="Bold" FontSize="16"></Label>
-        <controls:MultiLineLabel TextColor="{x:Static constants:Colors.SecondaryAccentColor}" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
+        <Label Text="{Binding SelectedWorkItem.Id}" TextColor="{x:Static constants:Colors.SecondaryAccentColor}" FontAttributes="Bold" FontSize="16"></Label>
+        <controls:MultiLineLabel TextColor="White" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
         
         </controls:MultiLineLabel>
       </StackLayout>
