@@ -9,8 +9,8 @@ namespace PBEye.Droid.Controls
 {
 	public class DefaultLabelRenderer : LabelRenderer
 	{
-		public static readonly Typeface DefaultTypefaceRegular = Typeface.CreateFromAsset(Forms.Context.Assets, "Avenir.otf");
-		public static readonly Typeface DefaultTypefaceBold = Typeface.CreateFromAsset(Forms.Context.Assets, "AvenirBold.otf");
+		private static readonly Typeface DefaultTypefaceRegular = Typeface.CreateFromAsset(Forms.Context.Assets, "Avenir.otf");
+		private static readonly Typeface DefaultTypefaceBold = Typeface.CreateFromAsset(Forms.Context.Assets, "AvenirBold.otf");
  
 		protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
 		{
