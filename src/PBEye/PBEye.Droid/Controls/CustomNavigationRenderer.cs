@@ -1,16 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Text;
 using Android.Text.Style;
-using Android.Views;
-using Android.Widget;
 using PBEye.Droid.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -29,11 +19,6 @@ namespace PBEye.Droid.Controls
 			SpannableString s = new SpannableString(activity.ActionBar.Title);
 			s.SetSpan(new TypefaceSpan("Avenir.otf"), 0, s.Length(), SpanTypes.ExclusiveExclusive);
 			activity.ActionBar.TitleFormatted = s;
-
-
-
-
-
 		}
 	}
 }

@@ -4,8 +4,7 @@
              xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
              xmlns:constants="clr-namespace:PBEye.Constants;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemDetailView"
-						 Title="{Binding Title}"
-						 >
+						 Title="{Binding Title}">
   
   <ScrollView> 
     

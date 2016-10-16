@@ -1,12 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Graphics;
 using Android.OS;
-using Android.Text;
-using Android.Text.Style;
-using Android.Widget;
-using PBEye.Droid.Controls;
-using Xamarin.Forms;
 
 namespace PBEye.Droid
 {
@@ -22,8 +16,6 @@ namespace PBEye.Droid
 
 			Xamarin.Forms.Forms.Init(this, bundle);
 			LoadApplication(new App());
-
-
 		}
 	}
 }

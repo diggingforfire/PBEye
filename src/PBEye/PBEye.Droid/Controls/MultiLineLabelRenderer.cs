@@ -1,4 +1,3 @@
-using System;
 using PBEye.Controls;
 using PBEye.Droid.Controls;
 using Xamarin.Forms;

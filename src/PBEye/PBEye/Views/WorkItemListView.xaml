@@ -14,10 +14,7 @@
   
     <ContentPage.Resources>
 		<ResourceDictionary>
-      
       <converters:WorkItemTypeToColorConverter x:Key="WorkItemTypeToColorConverter" />
- 
-      
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
@@ -42,7 +39,6 @@
 					<RowDefinition Height="*"></RowDefinition>
 				</Grid.RowDefinitions>
 
-        
         <StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
           <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SelectProject}"></TapGestureRecognizer>
@@ -113,7 +109,6 @@
 									</Grid>
 
 								</StackLayout>
-
 
                 <StackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
                   <Image Scale="0.5" Source="arrow_right.png" Aspect="AspectFit"></Image>

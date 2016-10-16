@@ -49,6 +49,7 @@ namespace PBEye.ViewModels
 					}
 	                catch (Exception ex)
 	                {
+						// TODO: logging
 		                LoginFailed = true;
 	                }
 	                finally
