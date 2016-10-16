@@ -14,6 +14,7 @@
 		public string AcceptanceCriteria { get; set; }
 		public string Type { get; set; }
 		public string ImplementOn { get; set; }
+		public string ReproSteps { get; set; }
 
 	    public string WorkItemNumberAndTitle => $"{Id} - {Title}";
 		public RawWorkItem Raw { get; set; }

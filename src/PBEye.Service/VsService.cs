@@ -93,7 +93,8 @@ namespace PBEye.Service
 					AcceptanceCriteria = workItem.GetField("Microsoft.VSTS.Common.AcceptanceCriteria"),
 					Changed = workItem.GetField("System.ChangedDate"),
 					Type = workItem.GetField("System.WorkItemType"),
-					ImplementOn = workItem.GetField("snappet.SnappetScrum.Implementon")
+					ImplementOn = workItem.GetField("snappet.SnappetScrum.Implementon"),
+					ReproSteps = workItem.GetField("Microsoft.VSTS.TCM.ReproSteps")
 				}));
 
 				offset += take;

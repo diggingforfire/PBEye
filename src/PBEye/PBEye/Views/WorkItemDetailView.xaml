@@ -3,20 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
              xmlns:constants="clr-namespace:PBEye.Constants;assembly=PBEye"
+             xmlns:converters="clr-namespace:PBEye.Converters;assembly=PBEye"
              x:Class="PBEye.Views.WorkItemDetailView"
 						 Title="{Binding Title}">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:WorkItemTypeToColorConverter x:Key="WorkItemTypeToColorConverter" />
+      <converters:StateToIconSourceConverter x:Key="StateToIconSourceConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
   
   <ScrollView> 
     
     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0" >
 
-      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" BackgroundColor="{x:Static constants:Colors.FeatureColor}">
+      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" BackgroundColor="{Binding SelectedWorkItem.Type, Converter={StaticResource WorkItemTypeToColorConverter}}">
         <Label Text="{Binding SelectedWorkItem.Id}" TextColor="{x:Static constants:Colors.SecondaryAccentColor}" FontAttributes="Bold" FontSize="16"></Label>
         <controls:MultiLineLabel TextColor="White" Text="{Binding SelectedWorkItem.Title}" FontAttributes="Bold" FontSize="18" LineBreakMode="TailTruncation" Lines="3">
         
         </controls:MultiLineLabel>
       </StackLayout>
-
+      
       <Grid VerticalOptions="Fill" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
@@ -28,27 +36,38 @@
         </Grid.RowDefinitions>
 
         <ContentView Grid.Row="0" Grid.Column="0" Padding="0, 15, 0, 0">
-          <Label HorizontalOptions="CenterAndExpand" Text="Team ST"/>
+          <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.Team}"/>
         </ContentView>
 
         <ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 0, 0">
-          <Label HorizontalOptions="CenterAndExpand" Text="Sprint 64" />
+          <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.Sprint}" />
         </ContentView>
 
         <ContentView Grid.Row="1" Grid.Column="0" Padding="0, 0, 0, 15">
-          <Label HorizontalOptions="CenterAndExpand" Text="Committed" />
+          <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.State}" />
         </ContentView>
 
         <ContentView Grid.Row="1" Grid.Column="1" Padding="0, 0, 0, 15">
-          <Label HorizontalOptions="CenterAndExpand" Text="Development" />
+          <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.ImplementOn}" />
         </ContentView>
       </Grid>
-    
-      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
+      
+      <BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
+      
+      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" IsVisible="{Binding IsFeature}">
         <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
         <Label Text="{Binding SelectedWorkItem.Description}"></Label>
       </StackLayout>
-    
+
+      <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" IsVisible="{Binding IsBug}">
+        <Label Text="Repro steps" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
+        <Label Text="{Binding SelectedWorkItem.ReproSteps}"></Label>
+      </StackLayout>
+
+      <ContentView Padding="20, 5, 20, 5">
+        <BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
+      </ContentView>
+
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
           <Label Text="Acceptance criteria" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
         <Label Text="{Binding SelectedWorkItem.AcceptanceCriteria}"></Label>

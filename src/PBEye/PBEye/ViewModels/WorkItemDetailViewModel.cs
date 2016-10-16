@@ -9,8 +9,13 @@ namespace PBEye.ViewModels
     {
         public WorkItem SelectedWorkItem { get; set; }
 	    public string Title { get; set; }
+	    public bool IsBug => SelectedWorkItem.Type == "Bug";
+	    public bool IsFeature => !IsBug;
 
-        public override void Init(object initData)
+	    public float DescriptionOpacity => SelectedWorkItem.Type == "Bug" ? 0 : 1;
+		public float ReproStepsOpacity => SelectedWorkItem.Type == "Bug" ? 1 : 0;
+
+		public override void Init(object initData)
         {
             SelectedWorkItem = (WorkItem)initData;
         }

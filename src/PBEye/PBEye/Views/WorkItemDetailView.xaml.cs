@@ -1,9 +1,16 @@
-﻿namespace PBEye.Views
+﻿using PBEye.Constants;
+using PBEye.Converters;
+using PBEye.Service.Models.WorkItem;
+using PBEye.ViewModels;
+using Xamarin.Forms;
+
+namespace PBEye.Views
 {
     public partial class WorkItemDetailView
     {
 		private readonly INavigationManager _navigationManager;
 
+	 
 		public WorkItemDetailView(INavigationManager navigationManager)
         {
             InitializeComponent();
@@ -13,7 +20,12 @@
 
 		protected override void OnAppearing()
 		{
-			_navigationManager.SetNavigationBarColor(PBEye.Constants.Colors.FeatureColor);
+			var viewModel = BindingContext as WorkItemDetailViewModel;
+
+			if (viewModel != null)
+			{
+				_navigationManager.SetNavigationBarColor(viewModel.SelectedWorkItem.Type == "Bug" ? Colors.BugColor : Colors.FeatureColor);
+			}
 
 			base.OnAppearing();
 		}
