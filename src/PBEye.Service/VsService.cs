@@ -52,7 +52,12 @@ namespace PBEye.Service
 
 		public async Task<IList<Iteration>> GetIterations(Project project, Team team)
 		{
-			return await Get<List<Iteration>>($"{_url}{string.Format(EndPoints.IterationsEndPoint, project.Name, team.Name)}");
+			var iterations = await Get<List<Iteration>>($"{_url}{string.Format(EndPoints.IterationsEndPoint, project.Name, team.Name)}");
+			var currentIterations = await Get<List<Iteration>>($"{_url}{string.Format(EndPoints.CurrentIterationEndPoint, project.Name, team.Name)}");
+
+			iterations.Single(iteration => iteration.Name == currentIterations.Single().Name).IsCurrent = true;
+
+			return iterations;
 		}
 
 		public async Task<IList<WorkItem>> GetWorkItems(Project project, Team team, Iteration iteration)

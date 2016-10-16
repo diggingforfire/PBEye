@@ -43,7 +43,7 @@
           <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SelectProject}"></TapGestureRecognizer>
           </StackLayout.GestureRecognizers>
-					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="{Binding SelectedProject.Name}" />
+					<Label FontSize="13" VerticalOptions="CenterAndExpand" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding SelectedProject.Name}" />
           <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
 				</StackLayout>
         
@@ -51,7 +51,7 @@
           <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SelectTeam}"></TapGestureRecognizer>
           </StackLayout.GestureRecognizers>
-          <Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="{Binding SelectedTeam.Name}" />
+          <Label FontSize="13" VerticalOptions="CenterAndExpand" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding SelectedTeam.Name}" />
           <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
 				</StackLayout>
 
@@ -59,7 +59,7 @@
           <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SelectIteration}"></TapGestureRecognizer>
           </StackLayout.GestureRecognizers>
-          <Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="{Binding SelectedIteration.Name}" />
+          <Label FontSize="13" VerticalOptions="CenterAndExpand" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding SelectedIteration.Name}" />
           <Image Source="arrow_down.png" Aspect="AspectFit"></Image>
 				</StackLayout>
 			</Grid>

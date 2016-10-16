@@ -64,8 +64,9 @@ namespace PBEye.ViewModels
 
 		private async Task GetAndSetIterations()
 		{
-			Iterations = new ObservableCollection<Iteration>(await _vsService.GetIterations(SelectedProject, SelectedTeam));
-			SelectedIteration = Iterations.Last();
+			var iterations = await _vsService.GetIterations(SelectedProject, SelectedTeam);
+			Iterations = new ObservableCollection<Iteration>(iterations.OrderByDescending(iteration => iteration.Name));
+			SelectedIteration = Iterations.Single(iteration => iteration.IsCurrent);
 		}
 
 		private async Task GetAndSetWorkItems()
