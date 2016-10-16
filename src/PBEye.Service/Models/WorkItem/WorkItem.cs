@@ -1,4 +1,4 @@
-﻿namespace PBEye.Service.Models
+﻿namespace PBEye.Service.Models.WorkItem
 {
 	public class WorkItem
 	{
@@ -12,6 +12,8 @@
 		public string Effort { get; set; }
 		public string Changed { get; set; }
 		public string AcceptanceCriteria { get; set; }
+		public string Type { get; set; }
+		public string ImplementOn { get; set; }
 
 	    public string WorkItemNumberAndTitle => $"{Id} - {Title}";
 		public RawWorkItem Raw { get; set; }

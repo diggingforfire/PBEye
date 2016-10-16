@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:PBEye.Controls;assembly=PBEye"
+              xmlns:converters="clr-namespace:PBEye.Converters;assembly=PBEye"
               xmlns:constants="clr-namespace:PBEye.Constants;assembly=PBEye"
              xmlns:behaviors="clr-namespace:PBEye.Behaviors;assembly=PBEye"
              Title="Work items"
@@ -13,11 +14,18 @@
   
     <ContentPage.Resources>
 		<ResourceDictionary>
+      
+      <converters:WorkItemTypeToColorConverter x:Key="WorkItemTypeToColorConverter" />
+ 
+      
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
-		<Grid VerticalOptions="FillAndExpand" RowSpacing="0" >
-
+  <StackLayout Orientation="Vertical">
+  
+    <ActivityIndicator VerticalOptions="CenterAndExpand" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Silver" />
+    
+		<Grid VerticalOptions="FillAndExpand" RowSpacing="0" IsVisible="{Binding IsIdle}">      
 			<Grid.RowDefinitions>
 				<RowDefinition Height="10*"></RowDefinition>
 				<RowDefinition Height="Auto"></RowDefinition>
@@ -35,25 +43,34 @@
 				</Grid.RowDefinitions>
 
         
-        <StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" BackgroundColor="{x:Static constants:Colors.SecondaryAccentColor}">
-					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Snappet" />
+        <StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding SelectProject}"></TapGestureRecognizer>
+          </StackLayout.GestureRecognizers>
+					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="{Binding SelectedProject.Name}" />
           <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
 				</StackLayout>
         
-				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" BackgroundColor="{x:Static constants:Colors.SecondaryAccentColor}">
-					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Team ST" />
+				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding SelectTeam}"></TapGestureRecognizer>
+          </StackLayout.GestureRecognizers>
+          <Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="{Binding SelectedTeam.Name}" />
           <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
 				</StackLayout>
 
-				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" BackgroundColor="{x:Static constants:Colors.SecondaryAccentColor}">
-					<Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Sprint 75" />
+				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding SelectIteration}"></TapGestureRecognizer>
+          </StackLayout.GestureRecognizers>
+          <Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="{Binding SelectedIteration.Name}" />
           <Image Source="arrow_down.png" Aspect="AspectFit"></Image>
 				</StackLayout>
 			</Grid>
 
 			<BoxView Grid.Row="1" HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
 			
-			<ListView  Grid.Row="2" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
+			<ListView RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsRefreshing}" IsPullToRefreshEnabled="True" Grid.Row="2" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
 				<ListView.Behaviors>
 					<behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ShowWorkItemDetail}" />
 				</ListView.Behaviors>
@@ -69,7 +86,7 @@
                   <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
                 
-								<StackLayout Grid.Column="0" BackgroundColor="{x:Static constants:Colors.BugColor}"></StackLayout>
+								<StackLayout Grid.Column="0" BackgroundColor="{Binding Type, Converter={StaticResource WorkItemTypeToColorConverter}}"></StackLayout>
                 
 								<StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="20, 0, 0, 0">
 									<controls:MultiLineLabel Text="{Binding WorkItemNumberAndTitle}" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Lines="2" LineBreakMode="TailTruncation" />
@@ -86,12 +103,12 @@
                     
                     <StackLayout Grid.Column="0" Orientation="Horizontal">
                       <Image Source="state_green.png" Aspect="AspectFit"></Image>
-                      <Label FontSize="12" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Ready for test"></Label> 
+                      <Label FontSize="12" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding State}"></Label> 
                     </StackLayout>
                     
                     <StackLayout Grid.Column="1" Orientation="Horizontal">
                       <Image Source="branch.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
-                      <Label FontSize="12" HorizontalOptions="End" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="Candidate"></Label> 
+                      <Label FontSize="12" HorizontalOptions="End" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding ImplementOn}"></Label> 
                     </StackLayout>
 									</Grid>
 
@@ -109,6 +126,7 @@
 				</ListView.ItemTemplate>
 			</ListView>
 		</Grid>
- 
+     
+  </StackLayout>
   
 </ContentPage>

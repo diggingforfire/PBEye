@@ -1,13 +1,48 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using PBEye.Service.Models;
+using PBEye.Service.Models.WorkItem;
 
 namespace PBEye.Service
 {
 	internal class DummyVsService : IVsService
 	{
-		public IList<WorkItem> GetWorkItems()
+ 
+		public Task<IList<Project>> GetProjects()
 		{
+			return null;
+		}
+
+		public Task<IList<Team>> GetTeams(Project project)
+		{
+			return null;
+		}
+
+		public Task<IList<WorkItem>> GetWorkItems(Project project, Team team, Iteration iteration)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public Task<IList<WorkItem>> GetWorkItems(Project project, Iteration iteration)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public Task<IList<Iteration>> GetIterations(Project project, Team team)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		async Task IVsService.Login(string organization, string username, string password)
+		{
+			await Task.Delay(2000);
+		}
+
+		public async Task<IList<WorkItem>> GetWorkItems(Project project)
+		{
+			await Task.Delay(2000);
+
 			return new List<WorkItem>
 			{
 				new WorkItem
@@ -34,9 +69,9 @@ namespace PBEye.Service
 			};
 		}
 
-		public WorkItem GetWorkItem(int id)
+		public async Task<WorkItem> GetWorkItem(int id)
 		{
-			return GetWorkItems().FirstOrDefault(x => x.Id == id.ToString());
+			return null;
 		}
 	}
 }

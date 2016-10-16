@@ -4,7 +4,7 @@
     {
         public static IVsService GetService()
         {
-            return new DummyVsService();
+            return new VsService();
         }
     }
 }

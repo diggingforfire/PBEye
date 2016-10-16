@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PBEye.Service.Models
+namespace PBEye.Service.Models.WorkItem
 {
 	public class RawWorkItem
 	{
@@ -12,6 +12,5 @@ namespace PBEye.Service.Models
 		{
 			return Fields.ContainsKey(key) ? Fields[key] : string.Empty;
 		}
-
 	}
 }

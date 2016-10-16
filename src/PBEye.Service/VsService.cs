@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PBEye.Service.Models;
+using PBEye.Service.Models.WorkItem;
 
 namespace PBEye.Service
 {
@@ -17,54 +18,64 @@ namespace PBEye.Service
 		private string _username;
 		private string _password;
 
-		public VsService(string url, string username, string password)
-		{
+		#region Public API
+
+		public async Task Login(string organization, string username, string password)
+		{	
+			_url = new Uri($"https://{organization}.visualstudio.com/").ToString();
 			_username = username;
 			_password = password;
-			_url = url;
+
+			try
+			{
+				await GetProjects();
+			}
+			catch (Exception)
+			{
+				_url = null;
+				_username = null;
+				_password = null;
+
+				throw;
+			}
 		}
 
-		public IList<WorkItem> GetWorkItems()
+		public async Task<IList<Project>> GetProjects()
 		{
-			var workItems = new List<WorkItem>();
+			return await Get<List<Project>>($"{_url}{EndPoints.ProjectsEndPoint}");
+		}
 
-			var parameters = new Dictionary<string, string>
-			{
-				{ "api-version", "1.0" }
-			};
+		public async Task<IList<Team>> GetTeams(Project project)
+		{
+			return await Get<List<Team>>($"{_url}{string.Format(EndPoints.TeamsEndPoint, project.Name)}");
+		}
 
-			var body = new
-			{
-				Query = "SELECT * FROM WorkItems WHERE State = 'In Progress'"
-			};
+		public async Task<IList<Iteration>> GetIterations(Project project, Team team)
+		{
+			return await Get<List<Iteration>>($"{_url}{string.Format(EndPoints.IterationsEndPoint, project.Name, team.Name)}");
+		}
 
-			var result = Post($"{_url}/DefaultCollection/_apis/wit/wiql", parameters, body);
+		public async Task<IList<WorkItem>> GetWorkItems(Project project, Team team, Iteration iteration)
+		{
+			List<WorkItem> workItems = new List<WorkItem>();
 
-			var workItemsResult = (WorkItemsResult)JsonConvert.DeserializeObject(result, typeof(WorkItemsResult));
+			var workItemIds = await GetWorkItemIds(project, team, iteration);
 
-			var workItemIds = workItemsResult.WorkItems.Select(workItemMeta => workItemMeta.Id).ToList();
-
-
-			int take = 200;
+			const int take = 200;
 			int offset = 0;
 
 			while (workItemIds.Count > offset)
 			{
 				var workItemParameters = new Dictionary<string, string>
 				{
-					{ "api-version", "1.0" },
-					{ "ids", string.Join(",", workItemIds.Skip(offset).Take(take)) },
-					{ "$expand", "all" }
+					{"ids", string.Join(",", workItemIds.Skip(offset).Take(take))},
+					{"$expand", "all"}
 				};
 
-				offset += take;
+				var rawWorkItems =
+					await Get<List<RawWorkItem>>($"{_url}{EndPoints.WorkItemsEndPoint}", workItemParameters);
 
-				var partialWorkItemsResult = Get($"{_url}/DefaultCollection/_apis/wit/workitems", workItemParameters).Result;
-
-
-				var partialWorkItems = (WorkItemResult)JsonConvert.DeserializeObject(partialWorkItemsResult, typeof(WorkItemResult));
-
-				workItems.AddRange(partialWorkItems.WorkItems.Select(workItem => new WorkItem
+				workItems.AddRange(rawWorkItems.Select(workItem => new WorkItem
 				{
 					Id = workItem.GetField("System.Id"),
 					Title = workItem.GetField("System.Title"),
@@ -75,68 +86,39 @@ namespace PBEye.Service
 					Description = workItem.GetField("System.Description"),
 					Effort = workItem.GetField("Microsoft.VSTS.Scheduling.Effort"),
 					AcceptanceCriteria = workItem.GetField("Microsoft.VSTS.Common.AcceptanceCriteria"),
-					Changed = workItem.GetField("System.ChangedDate")
+					Changed = workItem.GetField("System.ChangedDate"),
+					Type = workItem.GetField("System.WorkItemType"),
+					ImplementOn = workItem.GetField("snappet.SnappetScrum.Implementon")
 				}));
+
+				offset += take;
 			}
 
 			return workItems;
 		}
 
-		public WorkItem GetWorkItem(int id)
+		private async Task<List<int>> GetWorkItemIds(Project project, Team team, Iteration iteration)
 		{
-			var parameters = new Dictionary<string, string>
+			var url = $"{_url}{string.Format(EndPoints.WorkItemsQueryEndPoint, project.Name)}";
+
+			var workItemsMeta = await Post<WorkItemsResult>(url, new
 			{
-				{ "api-version", "1.0" },
-				{ "ids", id.ToString() },
-				{ "$expand", "all" }
-			};
+				Query =
+					"SELECT * " +
+					"FROM WorkItems " +
+					$"WHERE System.AreaPath = '{project.Name}\\{team.Name}' AND System.IterationPath= '{iteration.Path}'" +
+					"AND (System.WorkItemType = \'Bug\' OR System.WorkItemType = \'Product Backlog Item\')" + 
+					"AND System.State <> 'Removed'"
+			});
 
-			var result = Get($"{_url}/DefaultCollection/_apis/wit/workitems", parameters).Result;
+			var workItemIds = workItemsMeta.WorkItems.Select(workItemMeta => workItemMeta.Id).ToList();
 
-			var workItemResult = (WorkItemResult)JsonConvert.DeserializeObject(result, typeof(WorkItemResult));
-
-			if (workItemResult.Count == 0)
-			{
-				return null;
-			}
-
-			RawWorkItem workItem = workItemResult.WorkItems[0];
-
-			var workItemClean = new WorkItem
-			{
-				Id = workItem.GetField("System.Id"),
-				Title = workItem.GetField("System.Title"),
-				State = workItem.GetField("System.State"),
-				Team = workItem.GetField("System.NodeName"),
-				AssignedTo = workItem.GetField("AssignedTo"),
-				Sprint = workItem.GetField("System.IterationLevel3"),
-				Description = workItem.GetField("System.Description"),
-				Effort = workItem.GetField("Microsoft.VSTS.Scheduling.Effort"),
-				AcceptanceCriteria = workItem.GetField("Microsoft.VSTS.Common.AcceptanceCriteria"),
-				Changed = workItem.GetField("System.ChangedDate"),
-				Raw = workItem
-			};
-
-			return workItemClean;
+			return workItemIds;
 		}
 
-		private async Task<string> Get(string url, Dictionary<string, string> parameters)
-		{
-			using (var client = GetHttpClient())
-			{
-				var queryString = ParametersToQueryString(parameters);
+		#endregion
 
-				var urlWithQueryString = $"{url}?{queryString}";
-
-				var response = await client.GetAsync(urlWithQueryString);
-
-				response.EnsureSuccessStatusCode();
-
-				var responseBody = await response.Content.ReadAsStringAsync();
-
-				return responseBody;
-			}
-		}
+		#region Helper methods
 
 		private HttpClient GetHttpClient()
 		{
@@ -147,37 +129,71 @@ namespace PBEye.Service
 			return client;
 		}
 
-		private string Post(string url, Dictionary<string, string> parameters, object body)
-		{
-			var result = string.Empty;
-			using (var client = GetHttpClient())
-			{
-				var queryString = ParametersToQueryString(parameters);
-
-				var urlWithQueryString = $"{url}?{queryString}";
-
-				var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-
-				var postResult = client.PostAsync(urlWithQueryString, content).Result;
-
-				var json = postResult.Content.ReadAsStringAsync().Result;
-
-				result = json;
-			}
-
-			return result;
-		}
-
 		private string ParametersToQueryString(Dictionary<string, string> parameters)
 		{
-			var queryString = string.Empty;
+			var queryString = new StringBuilder();
 
 			foreach (var parameter in parameters)
 			{
-				queryString += $"&{parameter.Key}={parameter.Value}";
+				queryString.Append($"&{parameter.Key}={parameter.Value}");
 			}
 
-			return queryString.Length > 0 ? queryString.Substring(1) : queryString;
+			return queryString.ToString();
 		}
+
+		private string CreateRequestUri(string url, Dictionary<string, string> parameters)
+		{
+			StringBuilder stringBuilder = new StringBuilder();
+
+			stringBuilder.Append(url);
+
+			if (parameters != null)
+			{
+				stringBuilder.Append(ParametersToQueryString(parameters));
+			}
+
+			return stringBuilder.ToString();
+		}
+
+		private async Task<T> Post<T>(string url, object content, Dictionary<string, string> parameters = null) where T : class
+		{
+			return await ExecuteRequest<T>(client => 
+				client.PostAsync(CreateRequestUri(url, parameters), new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json")), false);
+		}
+
+		private async Task<T> Get<T>(string url, Dictionary<string, string> parameters = null) where T : class
+		{
+			return await ExecuteRequest<T>(client => 
+				client.GetAsync(CreateRequestUri(url, parameters)), true);
+		}
+
+		private async Task<T> ExecuteRequest<T>(Func<HttpClient, Task<HttpResponseMessage>> getResult, bool responseHasRoot) where T : class
+		{
+			using (var client = GetHttpClient())
+			{
+				var response = await getResult(client);
+
+				string json = await response.Content.ReadAsStringAsync();
+
+				response.EnsureSuccessStatusCode();
+
+				if (response.StatusCode == HttpStatusCode.NonAuthoritativeInformation)
+				{
+					throw new Exception("Non-Authoritative Information");
+				}
+
+				if (responseHasRoot)
+				{
+					dynamic deserializedResult = JsonConvert.DeserializeObject(json);
+					return deserializedResult.count > 0 ? deserializedResult.value.ToObject<T>() : default(T);
+				}
+				else
+				{
+					return JsonConvert.DeserializeObject<T>(json);
+				}
+			}
+		}
+
+		#endregion
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace PBEye.Service.Models
+﻿namespace PBEye.Service.Models.WorkItem
 {
 	public class WorkItemMeta
 	{

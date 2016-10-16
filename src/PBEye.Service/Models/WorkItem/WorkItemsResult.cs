@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PBEye.Service.Models
+namespace PBEye.Service.Models.WorkItem
 {
 	public class WorkItemsResult
 	{

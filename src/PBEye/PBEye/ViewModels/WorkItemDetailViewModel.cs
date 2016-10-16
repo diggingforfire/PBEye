@@ -1,5 +1,6 @@
 ﻿using FreshMvvm;
 using PBEye.Service.Models;
+using PBEye.Service.Models.WorkItem;
 using PropertyChanged;
 using Xamarin.Forms;
 
