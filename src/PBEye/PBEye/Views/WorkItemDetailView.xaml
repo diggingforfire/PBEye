@@ -56,12 +56,12 @@
       
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" IsVisible="{Binding IsFeature}">
         <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
-        <Label Text="{Binding SelectedWorkItem.Description}"></Label>
+        <Label Text="{Binding SelectedWorkItem.DescriptionDisplayValue}"></Label>
       </StackLayout>
 
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" IsVisible="{Binding IsBug}">
         <Label Text="Repro steps" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
-        <Label Text="{Binding SelectedWorkItem.ReproSteps}"></Label>
+        <Label Text="{Binding SelectedWorkItem.ReproStepsDisplayValue}"></Label>
       </StackLayout>
 
       <ContentView Padding="20, 5, 20, 5">
@@ -70,7 +70,7 @@
 
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
           <Label Text="Acceptance criteria" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
-        <Label Text="{Binding SelectedWorkItem.AcceptanceCriteria}"></Label>
+        <Label Text="{Binding SelectedWorkItem.AcceptanceCriteriaDisplayValue}"></Label>
       </StackLayout>
     
     </StackLayout>
