@@ -29,6 +29,7 @@ namespace PBEye.ViewModels
 		public bool IsBusy { get; set; }
 	    public bool IsIdle => !IsBusy;
 	    public bool IsRefreshing { get; set; }
+	    public bool HasIterations => Iterations != null && Iterations.Any();
 
 	    public WorkItemListViewModel(IVsService vsService)
         {
@@ -52,28 +53,81 @@ namespace PBEye.ViewModels
 
 	    private async Task GetAndSetProjects()
 	    {
-		    Projects = new ObservableCollection<Project>(await _vsService.GetProjects());
-		    SelectedProject = Projects.First();
+		    var projects = await _vsService.GetProjects();
+
+		    if (projects != null && projects.Any())
+		    {
+			    Projects = new ObservableCollection<Project>(projects);
+			    SelectedProject = Projects.First();
+		    }
+		    else
+		    {
+			    Projects = null;
+			    SelectedProject = null;
+		    }
 	    }
 
 		private async Task GetAndSetTeams()
 		{
-			Teams = new ObservableCollection<Team>(await _vsService.GetTeams(SelectedProject));
-			SelectedTeam = Teams.FirstOrDefault(team => team.Name == "Team ST") ?? Teams.First(); // hehe
+			if (SelectedProject != null)
+			{
+				var teams = await _vsService.GetTeams(SelectedProject);
+
+				if (teams != null && teams.Any())
+				{
+					Teams = new ObservableCollection<Team>(teams);
+					SelectedTeam = Teams.FirstOrDefault(team => team.Name == "Team ST") ?? Teams.First(); // hehe
+				}
+				else
+				{
+					Teams = null;
+					SelectedTeam = null;
+				}
+
+			}
+			else
+			{
+				Teams = null;
+				SelectedTeam = null;
+			}
 		}
 
 		private async Task GetAndSetIterations()
 		{
-			var iterations = await _vsService.GetIterations(SelectedProject, SelectedTeam);
-			Iterations = new ObservableCollection<Iteration>(iterations.OrderByDescending(iteration => iteration.Name));
-			SelectedIteration = Iterations.Single(iteration => iteration.IsCurrent);
+			if (SelectedProject != null && SelectedTeam != null)
+			{
+				var iterations = await _vsService.GetIterations(SelectedProject, SelectedTeam);
+
+				if (iterations != null && iterations.Any())
+				{
+					Iterations = new ObservableCollection<Iteration>(iterations.OrderByDescending(iteration => iteration.Name));
+					SelectedIteration = Iterations.Single(iteration => iteration.IsCurrent);
+				}
+				else
+				{
+					Iterations = null;
+					SelectedIteration = null;
+				}
+			}
+			else
+			{
+				Iterations = null;
+				SelectedIteration = null;
+			}
 		}
 
 		private async Task GetAndSetWorkItems()
 	    {
-			WorkItems = new ObservableCollection<WorkItem>(await 
-				_vsService.GetWorkItems(SelectedProject, SelectedTeam, SelectedIteration));
-		}
+			if (SelectedProject != null && SelectedTeam != null && SelectedIteration != null)
+			{
+				WorkItems = new ObservableCollection<WorkItem>(await
+					_vsService.GetWorkItems(SelectedProject, SelectedTeam, SelectedIteration));
+			}
+			else
+			{
+				WorkItems = null;
+			}
+	    }
 
 	    public Command Refresh
 	    {

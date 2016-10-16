@@ -56,7 +56,7 @@
           <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
 				</StackLayout>
 
-				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
+				<StackLayout Padding="10, 5, 10, 5" IsVisible="{Binding HasIterations}" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
           <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SelectIteration}"></TapGestureRecognizer>
           </StackLayout.GestureRecognizers>
