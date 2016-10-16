@@ -35,32 +35,34 @@
           <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ContentView Grid.Row="0" Grid.Column="0" Padding="0, 15, 0, 0">
+        <StackLayout Padding="0, 12, 0, 5" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
           <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.Team}"/>
-        </ContentView>
+        </StackLayout>
 
-        <ContentView Grid.Row="0" Grid.Column="1" Padding="0, 15, 0, 0">
+        <StackLayout Padding="0, 12, 0, 5" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
           <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.Sprint}" />
-        </ContentView>
+        </StackLayout>
 
-        <ContentView Grid.Row="1" Grid.Column="0" Padding="0, 0, 0, 15">
+        <StackLayout Padding="0, 5, 0, 12" Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+          <Image Source="{Binding SelectedWorkItem.State, Converter={StaticResource StateToIconSourceConverter}}" Aspect="AspectFit"></Image>
           <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.State}" />
-        </ContentView>
+        </StackLayout>
 
-        <ContentView Grid.Row="1" Grid.Column="1" Padding="0, 0, 0, 15">
-          <Label TextColor="{x:Static constants:Colors.PrimaryTextColor}" HorizontalOptions="CenterAndExpand" Text="{Binding SelectedWorkItem.ImplementOn}" />
-        </ContentView>
+        <StackLayout Padding="0, 5, 0, 12" Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+          <Image Source="branch.png" Aspect="AspectFit"></Image>
+          <Label LineBreakMode="TailTruncation" TextColor="{x:Static constants:Colors.PrimaryTextColor}"  Text="{Binding SelectedWorkItem.ImplementOn}" />
+        </StackLayout>
       </Grid>
       
       <BoxView HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
       
       <StackLayout Orientation="Vertical" Padding="20, 15, 20, 20" IsVisible="{Binding IsFeature}">
-        <Label Text="Description" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
+        <Label Text="Description" FontSize="16" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
         <Label Text="{Binding SelectedWorkItem.DescriptionDisplayValue}"></Label>
       </StackLayout>
 
       <StackLayout Orientation="Vertical" Padding="20, 15, 20, 20" IsVisible="{Binding IsBug}">
-        <Label Text="Repro steps" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
+        <Label Text="Repro steps" FontSize="16" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
         <Label Text="{Binding SelectedWorkItem.ReproStepsDisplayValue}"></Label>
       </StackLayout>
 
@@ -69,7 +71,7 @@
       </ContentView>
 
       <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
-          <Label Text="Acceptance criteria" FontSize="18" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
+          <Label Text="Acceptance criteria" FontSize="16" FontAttributes="Bold" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></Label>
         <Label Text="{Binding SelectedWorkItem.AcceptanceCriteriaDisplayValue}"></Label>
       </StackLayout>
     

@@ -67,8 +67,9 @@
 
 			<BoxView Grid.Row="1" HeightRequest="0.5" Color="{x:Static constants:Colors.LineAndSeparatorColor}"></BoxView>
 			
-			<ListView RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsRefreshing}" IsPullToRefreshEnabled="True" Grid.Row="2" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
-				<ListView.Behaviors>
+			<ListView CachingStrategy="RecycleElement" RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsRefreshing}" IsPullToRefreshEnabled="True" Grid.Row="2" SeparatorColor="{x:Static constants:Colors.LineAndSeparatorColor}" ItemsSource="{Binding WorkItems}" SelectedItem="{Binding SelectedWorkItem}" HasUnevenRows="False" RowHeight="100">
+				
+        <ListView.Behaviors>
 					<behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ShowWorkItemDetail}" />
 				</ListView.Behaviors>
 

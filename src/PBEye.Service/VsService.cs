@@ -40,6 +40,13 @@ namespace PBEye.Service
 			}
 		}
 
+		public void Logout()
+		{
+			_url = null;
+			_username = null;
+			_password = null;
+		}
+
 		public async Task<IList<Project>> GetProjects()
 		{
 			return await Get<List<Project>>($"{_url}{EndPoints.ProjectsEndPoint}");

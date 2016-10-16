@@ -7,7 +7,11 @@ namespace PBEye.Service
 {
 	internal class DummyVsService : IVsService
 	{
- 
+		public void Logout()
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public Task<IList<Project>> GetProjects()
 		{
 			return null;

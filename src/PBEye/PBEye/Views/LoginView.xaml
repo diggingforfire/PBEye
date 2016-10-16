@@ -1,20 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PBEye.Views.LoginView">
+             x:Class="PBEye.Views.LoginView"
+             xmlns:constants="clr-namespace:PBEye.Constants;assembly=PBEye"
+             BackgroundColor="{x:Static constants:Colors.NavigationBarColor}"
+             >
   <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-    
+
     <ContentView Padding="10">
-          <Entry WidthRequest="300" Placeholder="Organization" Text="{Binding Organization}"></Entry>
+      <Image Source="vs_white.png" Aspect="AspectFit"></Image>
+    </ContentView>
+
+    <ContentView Padding="20">
+      <Label TextColor="White" Text="PBEye" FontSize="30" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
     </ContentView>
 
     <ContentView Padding="10">
-    <Entry Placeholder="Username" Text="{Binding Username}"></Entry>
-      </ContentView>
+      <Entry TextColor="White" WidthRequest="300" Placeholder="Organization" Text="{Binding Organization}"></Entry>
+    </ContentView>
 
     <ContentView Padding="10">
-    <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True"></Entry>
-      </ContentView>
+      <Entry TextColor="White" Placeholder="Username" Text="{Binding Username}"></Entry>
+    </ContentView>
+
+    <ContentView Padding="10">
+    <Entry TextColor="White" Placeholder="Password" Text="{Binding Password}" IsPassword="True"></Entry>
+    </ContentView>
 
     <ContentView Padding="10, 15, 10, 15">
       <Button Text="Login" Command="{Binding Login}" IsEnabled="{Binding CanLogin}"></Button>

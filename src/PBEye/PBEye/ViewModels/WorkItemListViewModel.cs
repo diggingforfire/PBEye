@@ -239,6 +239,7 @@ namespace PBEye.ViewModels
 							ButtonType.OK.ToString(),
 						    ButtonType.Cancel.ToString()))
 				    {
+						_vsService.Logout();
 						await CoreMethods.PushPageModel<LoginViewModel>();
 						CoreMethods.RemoveFromNavigation();
 					}

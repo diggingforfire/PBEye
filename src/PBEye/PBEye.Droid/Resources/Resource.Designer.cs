@@ -3321,8 +3321,8 @@ namespace PBEye.Droid
 			// aapt resource value: 0x7f020066
 			public const int mr_ic_settings_light = 2130837606;
 			
-			// aapt resource value: 0x7f02006e
-			public const int notification_template_icon_bg = 2130837614;
+			// aapt resource value: 0x7f02006f
+			public const int notification_template_icon_bg = 2130837615;
 			
 			// aapt resource value: 0x7f020067
 			public const int state_blue = 2130837607;
@@ -3344,6 +3344,9 @@ namespace PBEye.Droid
 			
 			// aapt resource value: 0x7f02006d
 			public const int state_red = 2130837613;
+			
+			// aapt resource value: 0x7f02006e
+			public const int vs_white = 2130837614;
 			
 			static Drawable()
 			{
