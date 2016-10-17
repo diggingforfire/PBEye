@@ -31,7 +31,7 @@
       <Button Text="Login" Command="{Binding Login}" IsEnabled="{Binding CanLogin}"></Button>
     </ContentView>
 
-    <Label Text="An error occurred while logging in" TextColor="Red" IsVisible="{Binding LoginFailed}" HorizontalOptions="Center"/>  
+    <Label Text="An error occurred while logging in" TextColor="White" FontAttributes="Bold" IsVisible="{Binding LoginFailed}" HorizontalOptions="Center"/>  
     
     <ActivityIndicator Opacity="{Binding BusyOpacity}"
                    IsVisible="true"
