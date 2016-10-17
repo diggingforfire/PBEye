@@ -198,16 +198,15 @@ namespace PBEye.Service
 					throw new Exception("Non-Authoritative Information");
 				}
 
-				if (responseHasRoot)
-				{
-					dynamic deserializedResult = JsonConvert.DeserializeObject(json);
-					return deserializedResult.count > 0 ? deserializedResult.value.ToObject<T>() : default(T);
-				}
-				else
-				{
-					return JsonConvert.DeserializeObject<T>(json);
-				}
+				return responseHasRoot ? 
+					JsonConvert.DeserializeObject<BaseResult<T>>(json).Value :
+					JsonConvert.DeserializeObject<T>(json);
 			}
+		}
+
+		private class BaseResult<T> where T : class
+		{
+			public T Value { get; set; }
 		}
 
 		#endregion
