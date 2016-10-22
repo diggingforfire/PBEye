@@ -31,12 +31,15 @@
       <Button Text="Login" Command="{Binding Login}" IsEnabled="{Binding CanLogin}"></Button>
     </ContentView>
 
-    <Label Text="An error occurred while logging in" TextColor="White" FontAttributes="Bold" IsVisible="{Binding LoginFailed}" HorizontalOptions="Center"/>  
+    <Label Text="An error occurred while logging in" TextColor="White" FontAttributes="Bold" Opacity="{Binding LoginFailedOpacity}" HorizontalOptions="Center"/>  
     
-    <ActivityIndicator Opacity="{Binding BusyOpacity}"
+    <ContentView Padding="0, -30, 0, 0">
+        <ActivityIndicator Opacity="{Binding BusyOpacity}"
                    IsVisible="true"
                    IsRunning="{Binding IsBusy}"
                    Color="Black" />
+    </ContentView>
+  
     
   </StackLayout>
 </ContentPage>

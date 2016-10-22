@@ -22,6 +22,7 @@ namespace PBEye.ViewModels
 	    public bool IsBusy { get; set; }
 	    public bool LoginFailed { get; set; }
 	    public double BusyOpacity => IsBusy ? 1 : 0;
+	    public double LoginFailedOpacity => LoginFailed ? 1 : 0;
 
 	    public bool CanLogin => 
 			!IsBusy && 
