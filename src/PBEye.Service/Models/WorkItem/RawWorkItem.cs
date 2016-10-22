@@ -2,7 +2,7 @@
 
 namespace PBEye.Service.Models.WorkItem
 {
-	public class RawWorkItem
+	internal class RawWorkItem
 	{
 		public int Id { get; set; }
 		public int Rev { get; set; }

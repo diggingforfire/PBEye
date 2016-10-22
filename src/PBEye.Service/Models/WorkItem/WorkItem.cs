@@ -29,6 +29,6 @@ namespace PBEye.Service.Models.WorkItem
 		public string AcceptanceCriteriaDisplayValue => !string.IsNullOrEmpty(AcceptanceCriteriaCleaned) ? AcceptanceCriteriaCleaned : "No acceptance criteria available";
 
 		public string WorkItemNumberAndTitle => $"{Id} - {Title}";
-		public RawWorkItem Raw { get; set; }
+		internal RawWorkItem Raw { get; set; }
 	}
 }

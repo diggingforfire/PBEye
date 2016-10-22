@@ -1,6 +1,6 @@
 ﻿namespace PBEye.Service.Models.WorkItem
 {
-	public class WorkItemMeta
+	internal class WorkItemMeta
 	{
 		public int Id { get; set; }
 	}

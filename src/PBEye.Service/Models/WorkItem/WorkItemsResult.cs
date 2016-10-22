@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PBEye.Service.Models.WorkItem
 {
-	public class WorkItemsResult
+	internal class WorkItemsResult
 	{
 		public string QueryType { get; set; }
 		public string QueryResultType { get; set; }
