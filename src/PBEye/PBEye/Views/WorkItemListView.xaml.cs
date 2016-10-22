@@ -9,13 +9,13 @@ namespace PBEye.Views
         public WorkItemListView(INavigationManager navigationManager)
         {
             InitializeComponent();
-	        this._navigationManager = navigationManager;
+	        _navigationManager = navigationManager;
 			NavigationPage.SetHasBackButton(this, false);
         }
 
 		protected override void OnAppearing()
 		{
-			_navigationManager.SetNavigationBarColor(PBEye.Constants.Colors.NavigationBarColor);
+			_navigationManager.SetNavigationBarColor(Constants.Colors.NavigationBarColor);
 
 			base.OnAppearing();
 		}

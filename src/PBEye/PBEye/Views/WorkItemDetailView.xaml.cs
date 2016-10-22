@@ -1,8 +1,5 @@
 ﻿using PBEye.Constants;
-using PBEye.Converters;
-using PBEye.Service.Models.WorkItem;
 using PBEye.ViewModels;
-using Xamarin.Forms;
 
 namespace PBEye.Views
 {
