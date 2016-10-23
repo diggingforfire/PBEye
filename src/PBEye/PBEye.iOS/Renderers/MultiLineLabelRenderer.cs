@@ -1,13 +1,10 @@
-using System;
-using Foundation;
 using PBEye.Controls;
-using PBEye.iOS.Controls;
-using UIKit;
+using PBEye.iOS.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(MultiLineLabel), typeof(MultiLineLabelRenderer))]
-namespace PBEye.iOS.Controls
+namespace PBEye.iOS.Renderers
 {
     public class MultiLineLabelRenderer : DefaultLabelRenderer
 	{
