@@ -40,6 +40,7 @@
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="Constants\ButtonTypes.cs" />
     <Compile Include="Constants\Colors.cs" />
+    <Compile Include="Controls\FontIcon.cs" />
     <Compile Include="Controls\MultiLineLabel.cs" />
     <Compile Include="Converters\StateToIconSourceConverter.cs" />
     <Compile Include="Converters\WorkItemTypeToColorConverter.cs" />
