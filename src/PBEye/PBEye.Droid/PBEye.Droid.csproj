@@ -99,6 +99,7 @@
   <ItemGroup>
     <Compile Include="Controls\CustomNavigationRenderer.cs" />
     <Compile Include="Controls\DefaultLabelRenderer.cs" />
+    <Compile Include="Controls\FontIconRenderer.cs" />
     <Compile Include="Controls\MultiLineLabelRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -107,6 +108,7 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\Avenir.otf" />
     <AndroidAsset Include="Assets\AvenirBold.otf" />
+    <AndroidAsset Include="Assets\FontAwesome.otf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

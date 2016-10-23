@@ -1,5 +1,6 @@
 using System;
 using Android.Graphics;
+using Android.Util;
 using PBEye.Droid.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -18,7 +19,7 @@ namespace PBEye.Droid.Controls
 
 			if (Element.FontFamily == null)
 			{
-				Control.Typeface = Element.FontAttributes == FontAttributes.Bold ? DefaultTypefaceBold : DefaultTypefaceRegular;
+				Control.Typeface = GetTypeFace();
 			}
 
 			float lineHeight = 1.2f;
@@ -27,6 +28,11 @@ namespace PBEye.Droid.Controls
 			{
 				Control.SetLineSpacing(1f, lineHeight);
 			}
+		}
+
+		protected virtual Typeface GetTypeFace()
+		{
+			return Element.FontAttributes == FontAttributes.Bold ? DefaultTypefaceBold : DefaultTypefaceRegular;
 		}
 	}
 }
