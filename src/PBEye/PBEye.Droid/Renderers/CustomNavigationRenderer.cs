@@ -1,12 +1,12 @@
 using Android.App;
 using Android.Text;
 using Android.Text.Style;
-using PBEye.Droid.Controls;
+using PBEye.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
-namespace PBEye.Droid.Controls
+namespace PBEye.Droid.Renderers
 {
 	public class CustomNavigationRenderer : NavigationRenderer
 	{

@@ -44,6 +44,7 @@
     <Compile Include="Controls\MultiLineLabel.cs" />
     <Compile Include="Converters\StateToIconSourceConverter.cs" />
     <Compile Include="Converters\WorkItemTypeToColorConverter.cs" />
+    <Compile Include="FontAwesome.cs" />
     <Compile Include="INavigationManager.cs" />
     <Compile Include="PageModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

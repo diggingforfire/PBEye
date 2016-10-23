@@ -1,12 +1,11 @@
 using System;
 using Android.Graphics;
-using Android.Util;
-using PBEye.Droid.Controls;
+using PBEye.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(Label), typeof(DefaultLabelRenderer))]
-namespace PBEye.Droid.Controls
+namespace PBEye.Droid.Renderers
 {
 	public class DefaultLabelRenderer : LabelRenderer
 	{

@@ -5,6 +5,7 @@
               xmlns:converters="clr-namespace:PBEye.Converters;assembly=PBEye"
               xmlns:constants="clr-namespace:PBEye.Constants;assembly=PBEye"
              xmlns:behaviors="clr-namespace:PBEye.Behaviors;assembly=PBEye"
+             xmlns:pbEye="clr-namespace:PBEye;assembly=PBEye"
              Title="Work items"
              x:Class="PBEye.Views.WorkItemListView">
  
@@ -45,7 +46,7 @@
             <TapGestureRecognizer Command="{Binding SelectProject}"></TapGestureRecognizer>
           </StackLayout.GestureRecognizers>
 					<Label LineBreakMode="TailTruncation" FontSize="13" VerticalOptions="CenterAndExpand" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding SelectedProject.Name}" />
-          <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
+          <controls:FontIcon Text="{x:Static pbEye:FontAwesome.FAChevronDown}" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></controls:FontIcon>
 				</StackLayout>
         
 				<StackLayout Padding="10, 5, 10, 5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
@@ -53,7 +54,7 @@
             <TapGestureRecognizer Command="{Binding SelectTeam}"></TapGestureRecognizer>
           </StackLayout.GestureRecognizers>
           <Label LineBreakMode="TailTruncation" FontSize="13" VerticalOptions="CenterAndExpand" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding SelectedTeam.Name}" />
-          <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Aspect="AspectFit"></Image>
+          <controls:FontIcon Text="{x:Static pbEye:FontAwesome.FAChevronDown}" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></controls:FontIcon>
 				</StackLayout>
 
 				<StackLayout Padding="10, 5, 10, 5" IsVisible="{Binding HasIterations}" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" BackgroundColor="{x:Static constants:Colors.PrimaryAccentColor}">
@@ -61,7 +62,7 @@
             <TapGestureRecognizer Command="{Binding SelectIteration}"></TapGestureRecognizer>
           </StackLayout.GestureRecognizers>
           <Label LineBreakMode="TailTruncation" FontSize="13" VerticalOptions="CenterAndExpand" TextColor="{x:Static constants:Colors.PrimaryTextColor}" Text="{Binding SelectedIteration.Name}" />
-          <Image Source="arrow_down.png" Aspect="AspectFit"></Image>
+          <controls:FontIcon Text="{x:Static pbEye:FontAwesome.FAChevronDown}" TextColor="{x:Static constants:Colors.PrimaryTextColor}"></controls:FontIcon>
 				</StackLayout>
 			</Grid>
 
